@@ -1,0 +1,92 @@
+.note {
+    --blue: #0f92d8;
+    --cyan: #30cbef;
+    --green: #c2ef84;
+    --orange: #ffab5e;
+    --pink: #ff99c0;
+    --purple: #cb86c7;
+    --red: #ff4665;
+    --yellow: #fff000;
+}
+
+.note {
+	display: block;
+	z-index: 1;
+	margin: 17px;
+	padding: 15px 15px 15px 15px;
+	width: 350px;
+	height: 350px;
+	color: black;
+	text-decoration: none;
+	-webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+	-o-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+	-webkit-transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-o-transition: all 0.5s ease-in;
+	-ms-transition: all 0.5s ease-in;
+	transition: all 0.5s ease-in;
+	overflow: hidden;    
+}
+
+.note:nth-child(even) {
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+	-o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+}
+
+.note:nth-child(odd) {
+	-webkit-transform: rotate(-1deg);
+	-moz-transform: rotate(-1deg);
+	-o-transform: rotate(-1deg);
+	-ms-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+}
+
+.note:nth-child(3n) {
+	-webkit-transform: rotate(1deg);
+	-moz-transform: rotate(1deg);
+	-o-transform: rotate(1deg);
+	-ms-transform: rotate(1deg);
+	transform: rotate(1deg);
+}
+
+/* .note:hover {
+	-webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+	-o-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+	-webkit-transform: rotate(0deg) scale(1.25);
+	-moz-transform: rotate(0deg) scale(1.25);
+	-o-transform: rotate(0deg) scale(1.25);
+	-ms-transform: rotate(0deg) scale(1.25);
+	transform: rotate(0deg) scale(1.25);
+	z-index: 10;
+} */
+
+.note__delete-btn {
+	float: right;
+	background-color: transparent;
+    border: none;
+    font-size: 0.75em;
+	color: white;
+	cursor: pointer;
+}
+
+.note--handwritten {
+    /* font-family: Permanent Marker, Helvetica, sans-serif; */
+    font-family: Kalam, cursive;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.note--yellow {background-color: var(--yellow);}
+.note--orange {background-color: var(--orange);}
+.note--red    {background-color: var(--red);}
+.note--pink   {background-color: var(--pink);}
+.note--purple {background-color: var(--purple);}
+.note--blue   {background-color: var(--blue);}
+.note--cyan   {background-color: var(--cyan);}
+.note--green  {background-color: var(--green);}
