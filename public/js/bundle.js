@@ -11886,9 +11886,13 @@ var Modal = function Modal(_ref) {
       'section',
       { className: 'modal-main' },
       _react2.default.createElement(
-        'button',
-        { className: 'modal-main__close-btn', onClick: handleClose },
-        'X'
+        'div',
+        { className: 'modal__header' },
+        _react2.default.createElement(
+          'button',
+          { className: 'modal-main__close-btn', onClick: handleClose },
+          'X'
+        )
       ),
       children
     )
@@ -25555,7 +25559,7 @@ exports = module.exports = __webpack_require__(14)();
 
 
 // module
-exports.push([module.i, ".add-note {\n    margin: 24px auto auto auto;\n    text-align:center; \n}\n\n.add-note textarea {\n    resize: none;\n    height: 350px;\n    margin: auto;\n    max-width: 350px;\n    transform: none !important;\n}\n\n.add-note textarea::placeholder {\n    color: #eeeeee;\n}\n\n.add-note select {\n    background-color: transparent;\n    padding: 10px;\n    margin-top: 20px;\n    border: 1px solid #eeeeee;\n}\n\n.add-note__submit {\n    margin-top: 20px;\n    padding: 10px;\n    background: transparent;\n    border: 1px solid #eeeeee;\n    margin-bottom: 20px;\n    transition: background-color 0.5s ease;\n}\n\n.add-note__submit:hover {\n    background-color: #3b57ab;\n    color: #ffffff;\n}\n\n@media only screen \n    and (min-width: 768px) {\n    .add-note textarea {\n        margin: 0 auto;\n    }\n}", ""]);
+exports.push([module.i, ".add-note {\n    margin: 24px auto auto auto;\n    text-align:center; \n}\n\n.add-note textarea {\n    resize: none;\n    margin: auto;\n    height: 80vw;\n    width: 80vw;\n    transform: none !important;\n}\n\n.add-note textarea::placeholder {\n    color: #eeeeee;\n}\n\n.add-note select {\n    background-color: transparent;\n    padding: 10px;\n    margin-top: 20px;\n    border: 1px solid #eeeeee;\n}\n\n.add-note__submit {\n    margin-top: 20px;\n    padding: 10px;\n    background: transparent;\n    border: 1px solid #eeeeee;\n    margin-bottom: 20px;\n    transition: background-color 0.5s ease;\n}\n\n.add-note__submit:hover {\n    background-color: #3b57ab;\n    color: #ffffff;\n}\n\n@media only screen \n    and (min-width: 768px) {\n    .add-note textarea {\n        margin: 0 auto;\n    }\n}", ""]);
 
 // exports
 
@@ -25583,7 +25587,7 @@ exports = module.exports = __webpack_require__(14)();
 
 
 // module
-exports.push([module.i, ".app-header {\n    background-color: #3b57ab;\n    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n    color: #ffffff;\n    font-weight: bold;\n    padding-top: 6px;\n    text-align: center;\n    width: 100%;\n}\n\n.app-header__logo {\n    margin: auto;\n}\n\n.app-header__title {\n    display: inline;\n    font-weight: bold;\n}\n\n.app-header__button {\n    background-color: transparent;\n    border: none;\n    color: white;\n    cursor: pointer;\n    float: right;\n    font-size: 2em;\n    margin: auto 4px auto auto;\n}", ""]);
+exports.push([module.i, ".app-header {\n    background-color: #3b57ab;\n    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n    color: #ffffff;\n    font-weight: bold;\n    padding-top: 6px;\n    text-align: center;\n    width: 100%;\n}\n\n.app-header__logo {\n    margin: auto;\n}\n\n.app-header__title {\n    display: inline;\n    font-weight: bold;\n    font-size: 8.5vw;\n}\n\n.app-header__button {\n    background-color: transparent;\n    border: none;\n    color: white;\n    cursor: pointer;\n    float: right;\n    font-size: 8.5vw;\n    margin: auto 4px auto auto;\n}", ""]);
 
 // exports
 
@@ -25597,7 +25601,7 @@ exports = module.exports = __webpack_require__(14)();
 
 
 // module
-exports.push([module.i, ".modal {\n    position: fixed;\n    top: 0;\n    left: 0;\n    color: black;\n    width:100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.6);\n    z-index: 2;\n}\n  \n.modal-main {\n    position:fixed;\n    background: white;\n    width: 100%;\n    height: auto;\n    top:50%;\n    left:50%;\n    transform: translate(-50%,-50%);\n}\n\n.modal-main__close-btn {\n    float: right;\n    padding: 10px;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n.display-block {\n    display: block;\n}\n\n.display-none {\n    display: none;\n}\n\n@media only screen \n    and (min-width: 768px) {\n    .modal-main {\n        width: 80%;\n    }\n}\n", ""]);
+exports.push([module.i, ".modal {\n    position: fixed;\n    top: 0;\n    left: 0;\n    color: black;\n    font-size: 8.5vw;\n    width:100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.6);\n    z-index: 2;\n}\n  \n.modal-main {\n    position:fixed;\n    background: white;\n    top:50%;\n    left:50%;\n    transform: translate(-50%,-50%);\n    width: 100%;\n}\n\n.modal-main__close-btn {\n    float: right;\n    font-size: 8.5vw;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n.modal__header {\n    height: 8.5vw;\n    font-size: 8.5vw;\n}\n\n.display-block {\n    display: block;\n}\n\n.display-none {\n    display: none;\n}\n\n@media only screen \n    and (min-width: 768px) {\n    .modal-main {\n        width: 100%;\n    }\n}\n", ""]);
 
 // exports
 
@@ -25611,7 +25615,7 @@ exports = module.exports = __webpack_require__(14)();
 
 
 // module
-exports.push([module.i, ".note {\n    --blue: #0f92d8;\n    --cyan: #30cbef;\n    --green: #c2ef84;\n    --orange: #ffab5e;\n    --pink: #ff99c0;\n    --purple: #cb86c7;\n    --red: #ff4665;\n    --yellow: #fff000;\n}\n\n.note {\n\tdisplay: block;\n\tz-index: 1;\n\tmargin: 17px;\n\tpadding: 15px 15px 15px 15px;\n\twidth: 350px;\n\theight: 350px;\n\tcolor: black;\n\ttext-decoration: none;\n\t-webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n\t-moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n\t-o-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n\tbox-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n\t-webkit-transition: all 0.5s ease-in;\n\t-moz-transition: all 0.5s ease-in;\n\t-o-transition: all 0.5s ease-in;\n\t-ms-transition: all 0.5s ease-in;\n\ttransition: all 0.5s ease-in;\n\toverflow: hidden;    \n}\n\n.note:nth-child(even) {\n\t-webkit-transform: rotate(2deg);\n\t-moz-transform: rotate(2deg);\n\t-o-transform: rotate(2deg);\n\t-ms-transform: rotate(2deg);\n\ttransform: rotate(2deg);\n}\n\n.note:nth-child(odd) {\n\t-webkit-transform: rotate(-1deg);\n\t-moz-transform: rotate(-1deg);\n\t-o-transform: rotate(-1deg);\n\t-ms-transform: rotate(-1deg);\n\ttransform: rotate(-1deg);\n}\n\n.note:nth-child(3n) {\n\t-webkit-transform: rotate(1deg);\n\t-moz-transform: rotate(1deg);\n\t-o-transform: rotate(1deg);\n\t-ms-transform: rotate(1deg);\n\ttransform: rotate(1deg);\n}\n\n/* .note:hover {\n\t-webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);\n\t-moz-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);\n\t-o-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);\n\t-webkit-transform: rotate(0deg) scale(1.25);\n\t-moz-transform: rotate(0deg) scale(1.25);\n\t-o-transform: rotate(0deg) scale(1.25);\n\t-ms-transform: rotate(0deg) scale(1.25);\n\ttransform: rotate(0deg) scale(1.25);\n\tz-index: 10;\n} */\n\n.note__delete-btn {\n\tfloat: right;\n\tbackground-color: transparent;\n    border: none;\n    font-size: 0.75em;\n\tcolor: white;\n\tcursor: pointer;\n}\n\n.note--handwritten {\n    /* font-family: Permanent Marker, Helvetica, sans-serif; */\n    font-family: Kalam, cursive;\n    font-size: 2em;\n    font-weight: bold;\n}\n\n.note--yellow {background-color: var(--yellow);}\n.note--orange {background-color: var(--orange);}\n.note--red    {background-color: var(--red);}\n.note--pink   {background-color: var(--pink);}\n.note--purple {background-color: var(--purple);}\n.note--blue   {background-color: var(--blue);}\n.note--cyan   {background-color: var(--cyan);}\n.note--green  {background-color: var(--green);}", ""]);
+exports.push([module.i, ".note {\n    --blue: #0f92d8;\n    --cyan: #30cbef;\n    --green: #c2ef84;\n    --orange: #ffab5e;\n    --pink: #ff99c0;\n    --purple: #cb86c7;\n    --red: #ff4665;\n    --yellow: #fff000;\n}\n\n.note {\n\tdisplay: block;\n\tz-index: 1;\n\tmargin: 50px auto 100px auto;\n\tpadding: 15px 15px 15px 15px;\n\twidth: 80vw;\n\theight: 80vw;\n\tcolor: black;\n\ttext-decoration: none;\n\t-webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n\t-moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n\t-o-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n\tbox-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n\t-webkit-transition: all 0.5s ease-in;\n\t-moz-transition: all 0.5s ease-in;\n\t-o-transition: all 0.5s ease-in;\n\t-ms-transition: all 0.5s ease-in;\n\ttransition: all 0.5s ease-in;\n\toverflow: hidden; \n\tword-break: break-word;\n}\n\n.note:nth-child(even) {\n\t-webkit-transform: rotate(2deg);\n\t-moz-transform: rotate(2deg);\n\t-o-transform: rotate(2deg);\n\t-ms-transform: rotate(2deg);\n\ttransform: rotate(2deg);\n}\n\n.note:nth-child(odd) {\n\t-webkit-transform: rotate(-1deg);\n\t-moz-transform: rotate(-1deg);\n\t-o-transform: rotate(-1deg);\n\t-ms-transform: rotate(-1deg);\n\ttransform: rotate(-1deg);\n}\n\n.note:nth-child(3n) {\n\t-webkit-transform: rotate(1deg);\n\t-moz-transform: rotate(1deg);\n\t-o-transform: rotate(1deg);\n\t-ms-transform: rotate(1deg);\n\ttransform: rotate(1deg);\n}\n\n/* .note:hover {\n\t-webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);\n\t-moz-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);\n\t-o-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);\n\t-webkit-transform: rotate(0deg) scale(1.25);\n\t-moz-transform: rotate(0deg) scale(1.25);\n\t-o-transform: rotate(0deg) scale(1.25);\n\t-ms-transform: rotate(0deg) scale(1.25);\n\ttransform: rotate(0deg) scale(1.25);\n\tz-index: 10;\n} */\n\n.note__delete-btn {\n\tfloat: right;\n\tbackground-color: transparent;\n    border: none;\n    font-size: 0.75em;\n\tcolor: white;\n\tcursor: pointer;\n}\n\n.note--handwritten {\n    /* font-family: Permanent Marker, Helvetica, sans-serif; */\n    font-family: Kalam, cursive;\n\tfont-size: 8.5vw;   \n    font-weight: bold;\n}\n\n.note--yellow {background-color: var(--yellow);}\n.note--orange {background-color: var(--orange);}\n.note--red    {background-color: var(--red);}\n.note--pink   {background-color: var(--pink);}\n.note--purple {background-color: var(--purple);}\n.note--blue   {background-color: var(--blue);}\n.note--cyan   {background-color: var(--cyan);}\n.note--green  {background-color: var(--green);}", ""]);
 
 // exports
 
@@ -25625,7 +25629,7 @@ exports = module.exports = __webpack_require__(14)();
 
 
 // module
-exports.push([module.i, ".note-list {\n    display: flex;\n    flex-wrap: wrap;\n    /* margin-top: 16px;\n    padding: 16px;  */\n}", ""]);
+exports.push([module.i, ".note-list {\n    /* margin-top: 16px;\n    padding: 16px;  */\n}", ""]);
 
 // exports
 

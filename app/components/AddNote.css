@@ -5,9 +5,9 @@
 
 .add-note textarea {
     resize: none;
-    height: 350px;
     margin: auto;
-    max-width: 350px;
+    height: 80vw;
+    width: 80vw;
     transform: none !important;
 }
 

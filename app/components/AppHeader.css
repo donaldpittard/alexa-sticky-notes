@@ -15,6 +15,7 @@
 .app-header__title {
     display: inline;
     font-weight: bold;
+    font-size: 8.5vw;
 }
 
 .app-header__button {
@@ -23,6 +24,6 @@
     color: white;
     cursor: pointer;
     float: right;
-    font-size: 2em;
+    font-size: 8.5vw;
     margin: auto 4px auto auto;
 }
