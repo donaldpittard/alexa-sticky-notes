@@ -36,8 +36,52 @@
 }
 
 @media only screen 
-    and (min-width: 768px) {
+    and (min-width: 640px) {
+    .modal {
+        font-size: 4.5vw;
+    }
+}
+
+@media only screen
+    and (min-width: 1200px) {
+    .modal {
+        font-size: 2.45vw;
+    }
+
     .modal-main {
-        width: 100%;
+        width: 87%;
+        margin: 0 auto;
+        position: relative;
+        top: 10%;
+    }
+
+    .modal__header {
+        height: 2.45vw;
+        font-size: 2.45vw;
+    }
+
+    .modal-main__close-btn {
+        font-size: 2.45vw;
+    }
+}
+
+@media only screen
+    and (min-width: 1400px) {
+    .modal {
+        font-size: 1.45vw;
+    }
+
+    .modal-main {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .modal__header {
+        height: 1.45vw;
+        font-size: 1.45vw;
+    }
+
+    .modal-main__close-btn {
+        font-size: 1.45vw;
     }
 }

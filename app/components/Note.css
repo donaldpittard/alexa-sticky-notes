@@ -91,3 +91,29 @@
 .note--blue   {background-color: var(--blue);}
 .note--cyan   {background-color: var(--cyan);}
 .note--green  {background-color: var(--green);}
+
+@media only screen 
+    and (min-width: 640px) {
+    .note {
+		width: 40vw;
+		height: 40vw;
+		margin: 25px auto;
+	}
+
+	.note--handwritten {
+		font-size: 3.9vw;   
+	}
+}
+
+@media only screen 
+	and (min-width: 1200px) {
+	.note {
+		width: 25vw;
+		height: 25vw;
+		margin: 25px auto;
+	}
+
+	.note--handwritten {
+		font-size: 2.45vw;
+	}
+}

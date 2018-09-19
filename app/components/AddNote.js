@@ -12,7 +12,6 @@ class AddNote extends Component {
     }
 
     showModal() {
-        console.log("Showing Modal");
         this.setState({
             show: true
         });
@@ -30,7 +29,7 @@ class AddNote extends Component {
             alert('A comment is required');
             return;
         }
-
+                
         this.setState({
             newNote: {
                 id: uuid.v4(),
@@ -39,7 +38,8 @@ class AddNote extends Component {
             }
         }, function () {
             this.props.createNote(this.state.newNote);
-        })
+        });
+        this.refs.comment.value = '';
     }
 
     handleColorChange() {
@@ -66,7 +66,7 @@ class AddNote extends Component {
             <div className="add-note">
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <div>
-                        <textarea ref="comment" className={textAreaClasses} maxLength="100" placeholder="Add your note text here..."></textarea>
+                        <textarea ref="comment" className={textAreaClasses} maxLength="100" placeholder="Add your note text here..." autoFocus="true"></textarea>
                     </div>
                     <div>
                         <select ref="color" onChange={this.handleColorChange.bind(this)}>
