@@ -25601,7 +25601,7 @@ exports = module.exports = __webpack_require__(14)();
 
 
 // module
-exports.push([module.i, ".modal {\n    position: fixed;\n    top: 0;\n    left: 0;\n    color: black;\n    font-size: 8.5vw;\n    width:100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.6);\n    z-index: 2;\n}\n  \n.modal-main {\n    position:fixed;\n    background: white;\n    top:50%;\n    left:50%;\n    transform: translate(-50%,-50%);\n    width: 100%;\n}\n\n.modal-main__close-btn {\n    float: right;\n    font-size: 8.5vw;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n.modal__header {\n    height: 8.5vw;\n    font-size: 8.5vw;\n}\n\n.display-block {\n    display: block;\n}\n\n.display-none {\n    display: none;\n}\n\n@media only screen \n    and (min-width: 768px) {\n    .modal-main {\n        width: 100%;\n    }\n}\n", ""]);
+exports.push([module.i, ".modal {\n    top: 0;\n    left: 0;\n    color: black;\n    font-size: 8.5vw;\n    width:100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.6);\n    z-index: 2;\n}\n  \n.modal-main {\n    background: white;\n    width: 100%;\n}\n\n.modal-main__close-btn {\n    float: right;\n    font-size: 8.5vw;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n.modal__header {\n    height: 8.5vw;\n    font-size: 8.5vw;\n}\n\n.display-block {\n    display: block;\n}\n\n.display-none {\n    display: none;\n}\n\n@media only screen \n    and (min-width: 768px) {\n    .modal-main {\n        width: 100%;\n    }\n}\n", ""]);
 
 // exports
 
