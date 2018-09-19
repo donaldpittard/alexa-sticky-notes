@@ -13,6 +13,11 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $this->renderer->render($response, 'index.phtml', $args);
 });
 
+$app->get('/api', function (Request $request, Response $response, array $args){
+    $args['test'] = getenv('TEST_VALUE');
+    return $this->renderer->render($response,'api.phtml', $args);
+});
+
 $app->get('/privacy', function (Request $request, Response $response, array $args) {
     $this->renderer->render($response, 'privacy.phtml', $args);
 });
