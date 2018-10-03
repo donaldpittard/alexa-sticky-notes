@@ -1,5 +1,4 @@
 <?php
-define('APP_ROOT', __DIR__);
 $dbopts = parse_url(getenv('DATABASE_URL'));
 
 return [
@@ -17,19 +16,6 @@ return [
             'name' => 'slim-app',
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
-        ],
-        'doctrine' => [
-            'dev_mode'      => true,
-            'cache_dir'     => APP_ROOT . '/var/doctrine/',
-            'metadata_dirs' => [APP_ROOT . '/src/Domain'],
-            'connection'    => [
-                'driver'   => 'pdo_pgsql',
-                'host'     => $dbopts['host'],
-                'dbname'   => ltrim($dbopts['path'], '/'),
-                'user'     => $dbopts['user'],
-                'password' => $dbopts['pass'],
-                'charset'  => 'utf-8',
-            ],
         ],
     ],
 ];
