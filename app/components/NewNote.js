@@ -6,7 +6,7 @@ class NewNote extends Component {
         super(props)
         this.state = {
             color: '',
-            comment: '',
+            text: '',
         }
 
         this.handleFieldChange = this.handleFieldChange.bind(this)
@@ -28,7 +28,7 @@ class NewNote extends Component {
 
         const note = {
             color: this.state.color,
-            comment: this.state.comment
+            text: this.state.text
         }
 
         axios.post('/api/notes', note)
@@ -56,9 +56,9 @@ class NewNote extends Component {
                                         <select id='color'></select>
                                     </div>
                                     <div className='form-group'>
-                                        <label htmlFor='comment'>Comment</label>
+                                        <label htmlFor='text'>Text</label>
                                         <textarea 
-                                            value={this.state.comment}
+                                            value={this.state.text}
                                             onChange={this.handleFieldChange} />
                                     </div>
                                     <button className='btn btn-primary'>Create</button>

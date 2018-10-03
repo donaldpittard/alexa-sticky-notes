@@ -13,29 +13,22 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $this->renderer->render($response, 'index.phtml', $args);
 });
 
-$app->get('/api', function (Request $request, Response $response, array $args){
-    $args['test'] = getenv('TEST_VALUE');
-    return $this->renderer->render($response,'api.phtml', $args);
-});
-
 $app->get('/api/notes', function (Request $request, Response $response, array $args) {
-    $this->logger->addInfo('Fetching notes');
-    $data = [];
-
+    $data  = [];
     $notes = $this->db->query('SELECT * FROM notes;');
 
     foreach ($notes as $note) {
         $data[] = $note;
     }
-    
+
     return $response->withJson($data);
 });
 
-// $app->get('/api/note/new', function (Request $request, Response $response, array $args) {
-//     $data = $request->getParsedBody();
-//     $noteData = [];
-//     $noteData['color'] = 
-// });
+$app->post('/api/notes/new', function (Request $request, Response $response, array $args) {
+    $data = $request->getParsedBody();
+    $this->logger->addInfo($data);
+    
+});
 
 $app->get('/privacy', function (Request $request, Response $response, array $args) {
     $this->renderer->render($response, 'privacy.phtml', $args);

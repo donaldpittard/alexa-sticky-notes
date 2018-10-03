@@ -11462,57 +11462,22 @@ var App = function (_Component) {
 
     _this.state = {
       notes: [],
-      colors: []
+      colors: ['red', 'orange', 'pink', 'purple', 'blue', 'cyan', 'green', 'yellow']
     };
     return _this;
   }
 
   _createClass(App, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.setState({
-        notes: [{
-          id: _uuid2.default.v4(),
-          userId: 1,
-          color: "red",
-          comment: "Lorem ipsum dolor sit amet, id dolor."
-        }, {
-          id: _uuid2.default.v4(),
-          userId: 1,
-          color: "pink",
-          comment: "Lorem ipsum dolor sit amet, vel ut tincidunt, tristique bibendum netus."
-        }, {
-          id: _uuid2.default.v4(),
-          userId: 1,
-          color: "blue",
-          comment: "Lorem ipsum dolor sit amet, sapien elit pulvinar."
-        }, {
-          id: _uuid2.default.v4(),
-          userId: 1,
-          color: "green",
-          comment: "Lorem ipsum dolor sit amet, suscipit ut sem."
-        }, {
-          id: _uuid2.default.v4(),
-          userId: 1,
-          color: "orange",
-          comment: "Lorem ipsum dolor sit amet, integer ac fusce."
-        }, {
-          id: _uuid2.default.v4(),
-          userId: 1,
-          color: "yellow",
-          comment: "Lorem ipsum dolor sit amet, est egestas morbi, erat quisque consequat, est pellentesque."
-        }, {
-          id: _uuid2.default.v4(),
-          userId: 1,
-          color: "cyan",
-          comment: "Lorem ipsum dolor sit amet, est egestas morbi, erat quisque consequat, est pellentesque."
-        }, {
-          id: _uuid2.default.v4(),
-          userId: 1,
-          color: "purple",
-          comment: "Lorem ipsum dolor sit amet, est egestas morbi, erat quisque consequat, est pellentesque."
-        }],
-        colors: ['red', 'orange', 'pink', 'purple', 'blue', 'cyan', 'green', 'yellow']
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch('/api/notes').then(function (response) {
+        return response.json();
+      }).then(function (notes) {
+        return _this2.setState({
+          'notes': notes
+        });
       });
     }
   }, {
@@ -11684,8 +11649,8 @@ var AddNote = function (_Component) {
         key: 'handleSubmit',
         value: function handleSubmit(event) {
             event.preventDefault();
-            if (this.refs.comment.value === '') {
-                alert('A comment is required');
+            if (this.refs.text.value === '') {
+                alert('Text is required');
                 return;
             }
 
@@ -11693,12 +11658,12 @@ var AddNote = function (_Component) {
                 newNote: {
                     id: _uuid2.default.v4(),
                     color: this.refs.color.value,
-                    comment: this.refs.comment.value
+                    text: this.refs.text.value
                 }
             }, function () {
                 this.props.createNote(this.state.newNote);
             });
-            this.refs.comment.value = '';
+            this.refs.text.value = '';
         }
     }, {
         key: 'handleColorChange',
@@ -11736,7 +11701,7 @@ var AddNote = function (_Component) {
                     _react2.default.createElement(
                         'div',
                         null,
-                        _react2.default.createElement('textarea', { ref: 'comment', className: textAreaClasses, maxLength: '100', placeholder: 'Add your note text here...', autoFocus: 'true' })
+                        _react2.default.createElement('textarea', { ref: 'text', className: textAreaClasses, maxLength: '100', placeholder: 'Add your note text here...', autoFocus: 'true' })
                     ),
                     _react2.default.createElement(
                         'div',
@@ -11955,7 +11920,7 @@ var Note = function (_Component) {
                     { className: 'note__delete-btn', onClick: this.deleteNote.bind(this, this.props.note.id) },
                     _react2.default.createElement('i', { className: 'fa fa-minus-square', 'aria-hidden': 'true' })
                 ),
-                this.props.note.comment
+                this.props.note.text
             );
         }
     }]);

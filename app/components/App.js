@@ -9,64 +9,16 @@ class App extends Component {
     super();
     this.state = {
       notes: [],
-      colors: []
+      colors: ['red', 'orange', 'pink', 'purple', 'blue', 'cyan', 'green', 'yellow']
     };
   }
 
-  componentWillMount() {
-    this.setState({
-      notes: [
-        {
-          id: uuid.v4(),
-          userId: 1,
-          color: "red",
-          comment: "Lorem ipsum dolor sit amet, id dolor."
-        },
-        {
-          id: uuid.v4(),
-          userId: 1,
-          color: "pink",
-          comment: "Lorem ipsum dolor sit amet, vel ut tincidunt, tristique bibendum netus."
-        },
-        {
-          id: uuid.v4(),
-          userId: 1,
-          color: "blue",
-          comment: "Lorem ipsum dolor sit amet, sapien elit pulvinar."
-        },
-        {
-          id: uuid.v4(),
-          userId: 1,
-          color: "green",
-          comment: "Lorem ipsum dolor sit amet, suscipit ut sem."
-        },
-        {
-          id: uuid.v4(),
-          userId: 1,
-          color: "orange",
-          comment: "Lorem ipsum dolor sit amet, integer ac fusce."
-        },
-        {
-          id: uuid.v4(),
-          userId: 1,
-          color: "yellow",
-          comment: "Lorem ipsum dolor sit amet, est egestas morbi, erat quisque consequat, est pellentesque."
-        },
-        {
-            id: uuid.v4(),
-            userId: 1,
-            color: "cyan",
-            comment: "Lorem ipsum dolor sit amet, est egestas morbi, erat quisque consequat, est pellentesque."
-        },
-        {
-            id: uuid.v4(),
-            userId: 1,
-            color: "purple",
-            comment: "Lorem ipsum dolor sit amet, est egestas morbi, erat quisque consequat, est pellentesque."
-        }
-      ],
-      colors: ['red', 'orange', 'pink', 'purple', 'blue', 'cyan', 'green', 'yellow']
-    })
+  componentDidMount() {
+    fetch('/api/notes')
+      .then(response => response.json())
+      .then(notes => this.setState({
+        'notes': notes
+      }));
   }
 
   handleNewNote(newNote) {
