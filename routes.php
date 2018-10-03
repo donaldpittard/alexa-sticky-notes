@@ -18,6 +18,25 @@ $app->get('/api', function (Request $request, Response $response, array $args){
     return $this->renderer->render($response,'api.phtml', $args);
 });
 
+$app->get('/api/notes', function (Request $request, Response $response, array $args) {
+    $this->logger->addInfo('Fetching notes');
+    $data = [];
+
+    $notes = $this->db->query('SELECT * FROM notes;');
+
+    foreach ($notes as $note) {
+        $data[] = $note;
+    }
+    
+    return $response->withJson($data);
+});
+
+// $app->get('/api/note/new', function (Request $request, Response $response, array $args) {
+//     $data = $request->getParsedBody();
+//     $noteData = [];
+//     $noteData['color'] = 
+// });
+
 $app->get('/privacy', function (Request $request, Response $response, array $args) {
     $this->renderer->render($response, 'privacy.phtml', $args);
 });
