@@ -15,19 +15,40 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 $app->get('/api/notes', function (Request $request, Response $response, array $args) {
     $data  = [];
-    $notes = $this->db->query('SELECT * FROM notes;');
+    $notes = $this->db->query('SELECT * FROM notes ORDER BY id desc;');
 
     foreach ($notes as $note) {
-        $data[] = $note;
+        $data[] = [
+            'id'    => $note['id'],
+            'text'  => htmlspecialchars($note['text']),
+            'color' => htmlspecialchars($note['color']),
+        ];
     }
 
     return $response->withJson($data);
 });
 
 $app->post('/api/notes/new', function (Request $request, Response $response, array $args) {
-    $data = $request->getParsedBody();
-    $this->logger->addInfo($data);
-    
+    $data  = json_decode($request->getBody());
+    $color = $data->color;
+    $text  = $data->text;
+
+    if (!$color || !$text) {
+        return;
+    }
+
+    $statement = $this->db->prepare("INSERT INTO notes (text, color) VALUES (?, ?)");
+    $statement->execute([$text, $color]);
+
+    $responseData = [];
+    $responseData = [
+        'id'    => $this->db->lastInsertId(),
+        'text'  => htmlspecialchars($text),
+        'color' => htmlspecialchars($color),
+    ];
+
+    return $response
+        ->withJson($responseData, 200, JSON_UNESCAPED_UNICODE);
 });
 
 $app->get('/privacy', function (Request $request, Response $response, array $args) {

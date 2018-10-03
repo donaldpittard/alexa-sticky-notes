@@ -30,16 +30,6 @@ class NewNote extends Component {
             color: this.state.color,
             text: this.state.text
         }
-
-        axios.post('/api/notes', note)
-            .then(response => {
-                history.push('/')
-            })
-            .catch(error => {
-                this.setState({
-                    errors: error.response.data.errors
-                })
-            })
     }
 
     render () {

@@ -22,9 +22,20 @@ class App extends Component {
   }
 
   handleNewNote(newNote) {
-    let notes = this.state.notes;
-    notes.unshift(newNote);
-    this.setState({notes: notes});
+    fetch('/api/notes/new', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify(newNote)
+  }).then(response => response.json())
+    .then(note => {
+      console.log(note);
+      let notes = this.state.notes;
+      notes.unshift(note);
+      this.setState({notes: notes});
+    });
   }
 
   handleDeleteNote(id) {

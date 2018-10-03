@@ -29,7 +29,7 @@ class AddNote extends Component {
             alert('Text is required');
             return;
         }
-                
+
         this.setState({
             newNote: {
                 id: uuid.v4(),

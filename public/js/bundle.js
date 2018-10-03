@@ -11483,9 +11483,23 @@ var App = function (_Component) {
   }, {
     key: 'handleNewNote',
     value: function handleNewNote(newNote) {
-      var notes = this.state.notes;
-      notes.unshift(newNote);
-      this.setState({ notes: notes });
+      var _this3 = this;
+
+      fetch('/api/notes/new', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify(newNote)
+      }).then(function (response) {
+        return response.json();
+      }).then(function (note) {
+        console.log(note);
+        var notes = _this3.state.notes;
+        notes.unshift(note);
+        _this3.setState({ notes: notes });
+      });
     }
   }, {
     key: 'handleDeleteNote',
