@@ -28,7 +28,7 @@ $app->get('/api/notes', function (Request $request, Response $response, array $a
     return $response->withJson($data);
 });
 
-$app->post('/api/notes/new', function (Request $request, Response $response, array $args) {
+$app->post('/api/notes/create', function (Request $request, Response $response, array $args) {
     $data  = json_decode($request->getBody());
     $color = $data->color;
     $text  = $data->text;
@@ -49,6 +49,20 @@ $app->post('/api/notes/new', function (Request $request, Response $response, arr
 
     return $response
         ->withJson($responseData, 200, JSON_UNESCAPED_UNICODE);
+});
+
+$app->post('/api/notes/remove', function (Request $request, Response $response, array $args) {
+    $data = json_decode($request->getBody());
+    $id   = $data->id;
+
+    if (!$id) {
+        return;
+    }
+
+    $statement = $this->db->prepare("DELETE FROM notes WHERE id = ?");
+    $statement->execute([$id]);
+
+    return $response->withJson(['id' => $id], 200, JSON_UNESCAPED_UNICODE);
 });
 
 $app->get('/privacy', function (Request $request, Response $response, array $args) {

@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   handleNewNote(newNote) {
-    fetch('/api/notes/new', {
+    fetch('/api/notes/create', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -31,7 +31,6 @@ class App extends Component {
       body: JSON.stringify(newNote)
   }).then(response => response.json())
     .then(note => {
-      console.log(note);
       let notes = this.state.notes;
       notes.unshift(note);
       this.setState({notes: notes});
@@ -39,10 +38,22 @@ class App extends Component {
   }
 
   handleDeleteNote(id) {
-    let notes = this.state.notes;
-    let index = notes.findIndex(x => x.id === id);
-    notes.splice(index, 1);
-    this.setState({notes: notes});
+    fetch('/api/notes/remove', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify({
+        id: id
+      })
+    }).then(response => response.json())
+      .then(() => {
+        let notes = this.state.notes;
+        let index = notes.findIndex(x => x.id === id);
+        notes.splice(index, 1);
+        this.setState({notes: notes});
+      });
   }
 
   render() {

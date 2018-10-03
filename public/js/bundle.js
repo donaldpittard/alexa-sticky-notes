@@ -11485,7 +11485,7 @@ var App = function (_Component) {
     value: function handleNewNote(newNote) {
       var _this3 = this;
 
-      fetch('/api/notes/new', {
+      fetch('/api/notes/create', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -11495,7 +11495,6 @@ var App = function (_Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (note) {
-        console.log(note);
         var notes = _this3.state.notes;
         notes.unshift(note);
         _this3.setState({ notes: notes });
@@ -11504,12 +11503,27 @@ var App = function (_Component) {
   }, {
     key: 'handleDeleteNote',
     value: function handleDeleteNote(id) {
-      var notes = this.state.notes;
-      var index = notes.findIndex(function (x) {
-        return x.id === id;
+      var _this4 = this;
+
+      fetch('/api/notes/remove', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify({
+          id: id
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function () {
+        var notes = _this4.state.notes;
+        var index = notes.findIndex(function (x) {
+          return x.id === id;
+        });
+        notes.splice(index, 1);
+        _this4.setState({ notes: notes });
       });
-      notes.splice(index, 1);
-      this.setState({ notes: notes });
     }
   }, {
     key: 'render',
