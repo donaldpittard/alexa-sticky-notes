@@ -37,7 +37,7 @@ $container['google'] = function ($c) {
     $googleClient->setClientId($googleCreds['client_id']);
     $googleClient->setClientSecret($googleCreds['client_secret']);
     $googleClient->setApplicationName('Alexa Sticky Notes');
-    $googleClient->setRedirectUri('http://localhost:8080/login/google');
+    $googleClient->setRedirectUri($googleCreds['redirect_uri']);
     $googleClient->setScopes([
         'https://www.googleapis.com/auth/plus.login',
     ]);
