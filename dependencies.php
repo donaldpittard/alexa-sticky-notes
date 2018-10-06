@@ -19,6 +19,7 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+// Database
 $container['db'] = function ($c) {
     $db  = $c->get('settings')['db'];
     $pdo = new PDO('pgsql:host=' . $db['host'] . ';port=' . $db['port'] . ';dbname=' . $db['dbname'] . ';user=' . $db['user'] . ';password=' . $db['pass']);
@@ -26,4 +27,40 @@ $container['db'] = function ($c) {
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     
     return $pdo;
+};
+
+// Google Client
+$container['google'] = function ($c) {
+    $googleCreds  = $c->get('settings')['google'];
+    $googleClient = new Google_Client();
+
+    $googleClient->setClientId($googleCreds['client_id']);
+    $googleClient->setClientSecret($googleCreds['client_secret']);
+    $googleClient->setApplicationName('Alexa Sticky Notes');
+    $googleClient->setRedirectUri('http://localhost:8080/login/google');
+    $googleClient->setScopes([
+        'https://www.googleapis.com/auth/plus.login',
+    ]);
+
+    return $googleClient;
+};
+
+// Index Controller
+$container['index'] = function ($c) {
+    return new App\Controller\Index($c);
+};
+
+// Login Controller
+$container['login'] = function ($c) {
+    return new App\Controller\Login($c);
+};
+
+// Notes Controller
+$container['notes'] = function ($c) {
+    return new App\Controller\Notes($c);
+};
+
+// Session
+$container['session'] = function ($c) {
+    return new \SlimSession\Helper();
 };

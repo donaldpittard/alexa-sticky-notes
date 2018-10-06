@@ -24,6 +24,10 @@ return [
             'pass'   => $dbopts['pass'],
             'dbname' => ltrim($dbopts['path'], '/'),
             'port'   => $dbopts['port'],
-        ]
+        ],
+        'google' => [
+            'client_id'     => getenv('GOOGLE_CLIENT_ID'),
+            'client_secret' => getenv('GOOGLE_CLIENT_SECRET'),
+        ],
     ],
 ];
