@@ -7,13 +7,30 @@ use Slim\Http\Response;
 
 class Notes
 {
+    private $db;
+    private $isLoggedIn;
+
     public function __construct($container)
     {
+        $this->isLoggedIn = false;
+
+        $session = $container->get('session');
+
+        if ($session->exists('access_token')) {
+            $this->isLoggedIn = true;
+        }
+
         $this->db = $container->get('db');
     }
 
     public function fetchAll(Request $request, Response $response, array $args)
     {
+        if (!$this->isLoggedIn) {
+            return $response
+                ->withStatus(302)
+                ->withHeader('Location', '/login');
+        }
+
         $data  = [];
         $notes = $this->db->query('SELECT * FROM notes ORDER BY id DESC;');
 
@@ -29,6 +46,12 @@ class Notes
     }
 
     public function create(Request $request, Response $response, array $args) {
+        if (!$this->isLoggedIn) {
+            return $response
+                ->withStatus(302)
+                ->withHeader('Location', '/login');
+        }
+
         $data  = json_decode($request->getBody());
         $color = $data->color;
         $text  = $data->text;
@@ -52,6 +75,12 @@ class Notes
     }
 
     public function remove(Request $request, Response $response, array $args) {
+        if (!$this->isLoggedIn) {
+            return $response
+                ->withStatus(302)
+                ->withHeader('Location', '/login');
+        }
+
         $data = json_decode($request->getBody());
         $id   = $data->id;
     

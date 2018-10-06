@@ -8,18 +8,23 @@ use Slim\Http\Response;
 class Index
 {
     public function __construct($container) {
-        $this->container = $container;
+        $this->isLoggedIn = false;
+        $this->renderer   = $container->get('renderer');
+        $this->session    = $container->get('session');
+
+        if ($this->session->exists('access_token')) {
+            $this->isLoggedIn = true;
+        }
     }
 
     public function index(Request $request, Response $response, array $args)
     {
-        // Check to see if the session access token is set.
-        $session = $this->container->get('session');
-
-        if (!$session->exists('access_token')) {
-            return $response->withStatus(302)->withHeader('Location', '/login');
+        if (!$this->isLoggedIn) {
+            return $response
+                ->withStatus(302)
+                ->withHeader('Location', '/login');
         }
         
-        return $this->container->renderer->render($response, 'index.phtml', $args);
+        return $this->renderer->render($response, 'index.phtml', $args);
     }
 }
