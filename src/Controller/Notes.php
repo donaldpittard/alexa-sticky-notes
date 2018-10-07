@@ -20,9 +20,17 @@ class Notes
             $this->isLoggedIn = true;
         }
 
-        $this->db = $container->get('db');
+        $this->session = $session;
+        $this->db      = $container->get('db');
     }
 
+    /**
+     * Fetches all the notes for the current user.
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
+     */
     public function fetchAll(Request $request, Response $response, array $args)
     {
         if (!$this->isLoggedIn) {
@@ -31,8 +39,13 @@ class Notes
                 ->withHeader('Location', '/login');
         }
 
-        $data  = [];
-        $notes = $this->db->query('SELECT * FROM notes ORDER BY id DESC;');
+        $data   = [];
+        $userId = $this->session->get('user_id');
+
+        $sql       = "SELECT * FROM notes WHERE user_id = ? ORDER BY id DESC;";
+        $statement = $this->db->prepare($sql);
+        $statement->execute([$userId]);
+        $notes = $statement->fetchAll();
 
         foreach ($notes as $note) {
             $data[] = [
@@ -45,6 +58,13 @@ class Notes
         return $response->withJson($data);
     }
 
+    /**
+     * Creates a note for the current user.
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
+     */
     public function create(Request $request, Response $response, array $args) {
         if (!$this->isLoggedIn) {
             return $response
@@ -52,16 +72,17 @@ class Notes
                 ->withHeader('Location', '/login');
         }
 
-        $data  = json_decode($request->getBody());
-        $color = $data->color;
-        $text  = $data->text;
+        $data   = json_decode($request->getBody());
+        $color  = $data->color;
+        $text   = $data->text;
+        $userId = $this->session->get('user_id');
     
         if (!$color || !$text) {
             return;
         }
     
-        $statement = $this->db->prepare("INSERT INTO notes (text, color) VALUES (?, ?)");
-        $statement->execute([$text, $color]);
+        $statement = $this->db->prepare("INSERT INTO notes (text, color, user_id) VALUES (?, ?, ?)");
+        $statement->execute([$text, $color, $userId]);
     
         $responseData = [];
         $responseData = [
@@ -74,6 +95,13 @@ class Notes
             ->withJson($responseData, 200, JSON_UNESCAPED_UNICODE);
     }
 
+    /**
+     * Deletes a note from the database
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
+     */
     public function remove(Request $request, Response $response, array $args) {
         if (!$this->isLoggedIn) {
             return $response

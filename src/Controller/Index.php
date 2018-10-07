@@ -24,7 +24,7 @@ class Index
                 ->withStatus(302)
                 ->withHeader('Location', '/login');
         }
-        
+
         return $this->renderer->render($response, 'index.phtml', $args);
     }
 }
