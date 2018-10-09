@@ -40,7 +40,8 @@
     },
     "scripts": {
         "start": "php -S localhost:8080 -t public public/index.php",
-        "test": "phpunit"
+        "test": "phpunit",
+        "heroku": "heroku local -f Procfile.test -e .env.test"
     }
 
 }
