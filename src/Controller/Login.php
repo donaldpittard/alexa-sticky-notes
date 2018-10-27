@@ -12,6 +12,13 @@ class Login
         $this->container = $container;
     }
 
+    /**
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * 
+     * @return Response
+     */
     public function index(Request $request, Response $response, array $args) {
         $session = $this->container->session;
     
@@ -28,9 +35,11 @@ class Login
     
     /**
      * Sends backend request to authenticate user via google client.
+     * 
      * @param Request  $request
      * @param Response $response
      * @param array    $args
+     * 
      * @return Response
      */
     public function loginWithGoogle(Request $request, Response $response, array $args)

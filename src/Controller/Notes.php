@@ -11,7 +11,7 @@ class Notes
     private $isLoggedIn;
 
     public function __construct($container)
-    {
+    {        
         $this->isLoggedIn = false;
 
         $session = $container->get('session');

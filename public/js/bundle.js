@@ -11817,6 +11817,13 @@ var AppHeader = function (_Component) {
             this.hideModal();
         }
     }, {
+        key: 'signOut',
+        value: function signOut() {
+            fetch('/logout').then(function (response) {
+                return document.location.href = response.url;
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -11831,6 +11838,11 @@ var AppHeader = function (_Component) {
                     'button',
                     { className: 'app-header__button', type: 'button', onClick: this.showModal.bind(this) },
                     _react2.default.createElement('i', { className: 'fa fa-plus-square', 'aria-hidden': 'true' })
+                ),
+                _react2.default.createElement(
+                    'button',
+                    { className: 'app-header__button app-header__signout', onClick: this.signOut },
+                    _react2.default.createElement('i', { className: 'fa fa-sign-out' })
                 ),
                 _react2.default.createElement(
                     _Modal2.default,
@@ -25580,7 +25592,7 @@ exports = module.exports = __webpack_require__(14)();
 
 
 // module
-exports.push([module.i, ".app-header {\n    background-color: #3b57ab;\n    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n    color: #ffffff;\n    font-weight: bold;\n    padding-top: 6px;\n    text-align: center;\n    width: 100%;\n}\n\n.app-header__logo {\n    margin: auto;\n}\n\n.app-header__title {\n    display: inline;\n    font-weight: bold;\n    font-size: 8.5vw;\n}\n\n.app-header__button {\n    background-color: transparent;\n    border: none;\n    color: white;\n    cursor: pointer;\n    float: right;\n    font-size: 8.5vw;\n    margin: auto 4px auto auto;\n}\n\n@media only screen \n\tand (min-width: 1200px) {\n    .app-header__title {\n        font-size: 2.45vw;\n    }\n\n\t.app-header__button {\n        font-size: 2.45vw;\n    }\n}", ""]);
+exports.push([module.i, ".app-header {\n    background-color: #3b57ab;\n    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);\n    color: #ffffff;\n    font-weight: bold;\n    padding-top: 6px;\n    text-align: center;\n    width: 100%;\n    padding-bottom: 10px;\n}\n\n.app-header__logo {\n    margin: auto;\n}\n\n.app-header__title {\n    display: inline;\n    font-weight: bold;\n    font-size: 8.5vw;\n}\n\n.app-header__button {\n    background-color: transparent;\n    border: none;\n    color: white;\n    cursor: pointer;\n    float: right;\n    font-size: 8.5vw;\n    margin: auto 4px auto auto;\n}\n\n@media only screen \n\tand (min-width: 1200px) {\n    .app-header__title {\n        font-size: 2.45vw;\n    }\n\n\t.app-header__button {\n        font-size: 2.45vw;\n    }\n}", ""]);
 
 // exports
 

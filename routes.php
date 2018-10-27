@@ -11,6 +11,8 @@ $app->get('/login', 'login:index');
 
 $app->get('/login/google', 'login:loginWithGoogle');
 
+$app->get('/logout', 'logout');
+
 $app->get('/api/notes', 'notes:fetchAll');
 
 $app->post('/api/notes/create', 'notes:create');

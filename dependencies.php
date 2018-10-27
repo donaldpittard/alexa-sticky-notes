@@ -62,3 +62,8 @@ $container['notes'] = function ($c) {
 $container['session'] = function ($c) {
     return new \SlimSession\Helper();
 };
+
+// Logout Controller
+$container['logout'] = function ($c) {
+    return new App\Controller\Logout($c);
+};
