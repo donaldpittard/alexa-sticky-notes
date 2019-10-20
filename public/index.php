@@ -11,8 +11,10 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$env = Dotenv\Dotenv::create(__DIR__ . '/../');
-$env->load();
+if (file_exists(__DIR__ . '/../.env')) {
+    $env = Dotenv\Dotenv::create(__DIR__ . '/../');
+    $env->load();
+}
 
 session_start();
 
