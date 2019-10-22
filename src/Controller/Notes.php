@@ -2,49 +2,40 @@
 
 namespace App\Controller;
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use PDO;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use SlimSession\Helper;
 
 class Notes
 {
     private $db;
-    private $isLoggedIn;
 
-    public function __construct($container)
+    public function __construct(PDO $db, Helper $session)
     {        
-        $this->isLoggedIn = false;
-
-        $session = $container->get('session');
-
-        if ($session->exists('access_token')) {
-            $this->isLoggedIn = true;
-        }
-
+        $this->db      = $db;
         $this->session = $session;
-        $this->db      = $container->get('db');
     }
 
     /**
      * Fetches all the notes for the current user.
-     * @param Request  $request
-     * @param Response $response
+     * @param RequestInterface  $request
+     * @param ResponseInterface $response
      * @param array    $args
-     * @return Response
+     * @return ResponseInterface
      */
-    public function fetchAll(Request $request, Response $response, array $args)
-    {
-        if (!$this->isLoggedIn) {
-            return $response
-                ->withStatus(302)
-                ->withHeader('Location', '/login');
-        }
-
-        $data   = [];
-        $userId = $this->session->get('user_id');
-
+    public function fetchAll(
+        RequestInterface $request, 
+        ResponseInterface $response, 
+        array $args
+    ): ResponseInterface {
+        $data      = [];
+        $userId    = $this->session->get('user_id');
         $sql       = "SELECT * FROM notes WHERE user_id = ? ORDER BY id DESC;";
         $statement = $this->db->prepare($sql);
+
         $statement->execute([$userId]);
+
         $notes = $statement->fetchAll();
 
         foreach ($notes as $note) {
@@ -60,28 +51,27 @@ class Notes
 
     /**
      * Creates a note for the current user.
-     * @param Request  $request
-     * @param Response $response
+     * @param RequestInterface $request
+     * @param ResponseInterface $response
      * @param array    $args
-     * @return Response
+     * @return ResponseInterface
      */
-    public function create(Request $request, Response $response, array $args) {
-        if (!$this->isLoggedIn) {
-            return $response
-                ->withStatus(302)
-                ->withHeader('Location', '/login');
-        }
-
+    public function create(
+        RequestInterface $request, 
+        ResponseInterface $response, 
+        array $args
+    ): ResponseInterface {
         $data   = json_decode($request->getBody());
         $color  = $data->color;
         $text   = $data->text;
         $userId = $this->session->get('user_id');
     
         if (!$color || !$text) {
-            return;
+            return $response->withStatus(500);
         }
     
-        $statement = $this->db->prepare("INSERT INTO notes (text, color, user_id) VALUES (?, ?, ?)");
+        $statement = $this->db
+            ->prepare("INSERT INTO notes (text, color, user_id) VALUES (?, ?, ?)");
         $statement->execute([$text, $color, $userId]);
     
         $responseData = [];
@@ -92,33 +82,39 @@ class Notes
         ];
     
         return $response
-            ->withJson($responseData, 200, JSON_UNESCAPED_UNICODE);
+            ->withJson(
+                $responseData, 
+                200, 
+                JSON_UNESCAPED_UNICODE
+            );
     }
 
     /**
      * Deletes a note from the database
-     * @param Request  $request
-     * @param Response $response
+     * @param RequestInterface  $request
+     * @param ResponseInterface $response
      * @param array    $args
-     * @return Response
+     * @return ResponseInterface
      */
-    public function remove(Request $request, Response $response, array $args) {
-        if (!$this->isLoggedIn) {
-            return $response
-                ->withStatus(302)
-                ->withHeader('Location', '/login');
-        }
-
+    public function remove(
+        RequestInterface $request, 
+        ResponseInterface $response, 
+        array $args
+    ) {
         $data = json_decode($request->getBody());
         $id   = $data->id;
     
         if (!$id) {
-            return;
+            return $response->withStatus(500);
         }
     
-        $statement = $this->db->prepare("DELETE FROM notes WHERE id = ?");
+        $statement = $this->db
+            ->prepare("DELETE FROM notes WHERE id = ?");
+            
         $statement->execute([$id]);
     
-        return $response->withJson(['id' => $id], 200, JSON_UNESCAPED_UNICODE);
+        return $response->withJson([
+            'id' => $id
+        ], 200, JSON_UNESCAPED_UNICODE);
     }
 }
