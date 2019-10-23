@@ -39,13 +39,9 @@ class InitialMigration extends AbstractMigration
         $notes  = $this->table('notes');
         $notes->addColumn('user_id', 'integer')
             ->addColumn('text', 'text')
-            ->addColumn('color_id', 'string')
+            ->addColumn('color', 'string')
             ->addForeignKey('user_id', 'users', 'id')
             ->addTimestamps()
-            ->create();
-
-        $colors = $this->table('colors');
-        $colors->addColumn('hex', 'string')
             ->create();
     }
 }
