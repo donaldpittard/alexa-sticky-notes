@@ -21,6 +21,10 @@
     list-style-type: none;
 }
 
+.header__nav a, .header__nav a:hover {
+    color: #555555;
+}
+
 .header__nav.header--responsive {
     display: block;
 }
