@@ -35,7 +35,10 @@ class App extends Component {
 
     addNote(newNote);
     notes.unshift(newNote);
-    this.setState({ notes: notes });
+    this.setState({
+      notes: notes,
+      showAddNoteModal: false
+    });
   }
 
   async handleDeleteNote(id) {

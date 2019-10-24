@@ -11638,7 +11638,10 @@ var App = function (_Component) {
 
       (0, _apiClient.addNote)(newNote);
       notes.unshift(newNote);
-      this.setState({ notes: notes });
+      this.setState({
+        notes: notes,
+        showAddNoteModal: false
+      });
     }
   }, {
     key: 'handleDeleteNote',
@@ -11853,7 +11856,7 @@ var AddNote = function (_Component) {
                     text: this.refs.text.value
                 }
             }, function () {
-                this.props.createNote(this.state.newNote);
+                this.props.onCreateNote(this.state.newNote);
             });
             this.refs.text.value = '';
         }
@@ -11893,7 +11896,11 @@ var AddNote = function (_Component) {
                     _react2.default.createElement(
                         'div',
                         null,
-                        _react2.default.createElement('textarea', { ref: 'text', className: textAreaClasses, maxLength: '100', placeholder: 'Add your note text here...', autoFocus: 'true' })
+                        _react2.default.createElement('textarea', { ref: 'text',
+                            className: textAreaClasses,
+                            maxLength: '100',
+                            placeholder: 'Add your note text here...',
+                            autoFocus: 'true' })
                     ),
                     _react2.default.createElement(
                         'div',
@@ -26006,7 +26013,7 @@ exports.push([module.i, "body, html {\n  font-family: 'Segoe UI', Tahoma, Geneva
 
 exports = module.exports = __webpack_require__(14)(false);
 // Module
-exports.push([module.i, ".header {\n    background-color: #ffffff;\n    border-bottom: 1px solid rgba(0,0,0,.1);\n    color: #444444;\n    padding: 0.25em 0 0.75em 0;\n    width: 100%;\n}\n\n.header--sticky {\n    position: fixed;\n    top: 0;\n    z-index: 10;\n}\n\n.header--shadow {\n    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);\n}\n\n.header__nav {\n    display: none;\n    list-style-type: none;\n}\n\n.header__nav.header--responsive {\n    display: block;\n}\n\n.header__nav li {\n    text-align: center;\n    margin: 15px auto;\n}\n\n.header__brand {\n    font-family: Permanent Marker, Helvetica, sans-serif;\n    font-size: 2rem;\n    display: inline-block;\n    margin-left: 20px;\n}\n\n.header__icon {\n    position: absolute;\n    top: 10px;\n    right: 20px;\n    cursor: pointer;\n    font-size: 24px;\n}\n\n@media screen and (min-width: 768px) {\n    .header {\n        display: flex;\n        justify-content: space-between;\n        padding-bottom: 0;\n        height: 70px;\n        align-items: center;\n    }\n\n    .header__nav {\n        display: flex;\n        margin-right: 30px;\n        flex-direction: row;\n        justify-content: flex-end;\n    }\n\n    .header__nav li {\n        margin: 0;\n    }\n\n    .header__link {\n        margin-left: 40px;\n    }\n    .header__brand {\n        margin-top: 0;\n    }\n   .header__icon {\n       display: none;\n    }\n}", ""]);
+exports.push([module.i, ".header {\n    background-color: #ffffff;\n    border-bottom: 1px solid rgba(0,0,0,.1);\n    color: #000000;\n    padding: 0.25em 0 0.75em 0;\n    width: 100%;\n}\n\n.header--sticky {\n    position: fixed;\n    top: 0;\n    z-index: 10;\n}\n\n.header--shadow {\n    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);\n}\n\n.header__nav {\n    display: none;\n    list-style-type: none;\n}\n\n.header__nav.header--responsive {\n    display: block;\n}\n\n.header__nav li {\n    text-align: center;\n    margin: 15px auto;\n}\n\n.header__brand {\n    font-family: Permanent Marker, Helvetica, sans-serif;\n    font-size: 2rem;\n    display: inline-block;\n    margin-left: 20px;\n}\n\n.header__icon {\n    position: absolute;\n    top: 10px;\n    right: 20px;\n    cursor: pointer;\n    font-size: 24px;\n}\n\n@media screen and (min-width: 768px) {\n    .header {\n        display: flex;\n        justify-content: space-between;\n        padding-bottom: 0;\n        height: 70px;\n        align-items: center;\n    }\n\n    .header__nav {\n        display: flex;\n        margin-right: 30px;\n        flex-direction: row;\n        justify-content: flex-end;\n    }\n\n    .header__nav li {\n        margin: 0;\n    }\n\n    .header__link {\n        margin-left: 40px;\n    }\n    .header__brand {\n        margin-top: 0;\n    }\n   .header__icon {\n       display: none;\n    }\n}", ""]);
 
 
 /***/ }),
@@ -26033,7 +26040,7 @@ exports.push([module.i, ".note {\n    --blue: #0f92d8;\n    --cyan: #30cbef;\n  
 
 exports = module.exports = __webpack_require__(14)(false);
 // Module
-exports.push([module.i, ".note-list {\n    margin-top: 4.5em\n}\n\n@media only screen \n    and (min-width: 1000px) {\n    .note-list {\n        display: flex;\n        flex-wrap: wrap;\n    }\n}", ""]);
+exports.push([module.i, ".note-list {\n    margin-top: 4.5em\n}\n\n@media only screen \n    and (min-width: 1000px) {\n    .note-list {\n        display: grid;\n        grid-template-columns: 1fr 1fr 1fr;\n    }\n}", ""]);
 
 
 /***/ }),
