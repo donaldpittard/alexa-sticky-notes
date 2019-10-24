@@ -2,18 +2,29 @@ import React from 'react';
 import './AppHeader.css';
 
 const AppHeader = props => {
+    const responsive = props.showMenu ? 'header--responsive' : '';
+
     return (
-        <div classNameName="sticky-top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-            <h1 className="app-brand my-0 mr-md-auto font-weight-normal">Sticky Notes</h1>
-            <nav className="my-2 my-md-0 mr-md-3">
-                <a className="p-2 text-dark"
-                    onClick={props.onClickAddNote}
-                    href="#">Add Note</a>
-                <a className="p-2 text-dark"
-                    onClick={props.onClickLogOut}
-                    href="#">Log Out</a>
-            </nav>
-        </div>
+        <nav className="header header--sticky header--shadow">
+            <h1 className="header__brand">Sticky Notes</h1>
+            <span className="header__icon"
+                onClick={props.onClickMenu}
+            >
+                <i className="fa fa-bars"></i>
+            </span>
+            <ul className={`header__nav ${responsive}`}>
+                <li>
+                    <a className="header__link"
+                        onClick={props.onClickAddNote}
+                        href="#">Add Note</a>
+                </li>
+                <li>
+                    <a className="header__link"
+                        onClick={props.onClickLogOut}
+                        href="#">Log Out</a>
+                </li>
+            </ul>
+        </nav>
     );
 };
 

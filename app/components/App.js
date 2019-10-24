@@ -1,20 +1,23 @@
+import 'reset-css';
+import './App.css';
 import React, { Component } from 'react';
 import { addNote, removeNote, fetchNotes } from '../lib/apiClient';
-import NoteList from './NoteList';
 import AppHeader from './AppHeader';
+import NoteList from './NoteList';
 import AddNote from './AddNote';
 import Modal from './Modal';
-import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      showMenu: false,
       showAddNoteModal: false,
       notes: [],
       colors: ['red', 'orange', 'pink', 'purple', 'blue', 'cyan', 'green', 'yellow']
     };
 
+    this.handleMenuClick = this.handleMenuClick.bind(this);
     this.handleAddNoteClick = this.handleAddNoteClick.bind(this);
     this.handleCloseAddNoteModal = this.handleCloseAddNoteModal.bind(this);
     this.handleNewNote = this.handleNewNote.bind(this);
@@ -58,10 +61,18 @@ class App extends Component {
     this.setState({ showAddNoteModal: true });
   }
 
+  handleMenuClick() {
+    let showMenu = this.state.showMenu;
+
+    this.setState({ showMenu: !showMenu });
+  }
+
   render() {
     return (
       <div className="App">
         <AppHeader
+          showMenu={this.state.showMenu}
+          onClickMenu={this.handleMenuClick}
           onClickAddNote={this.handleAddNoteClick}
           onClickLogOut={this.handleLogOutClick}
           colors={this.state.colors}

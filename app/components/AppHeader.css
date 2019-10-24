@@ -1,3 +1,97 @@
-.app-brand {
-    font-family: Permanent Marker, Helvetica, sans-serif;
+.header {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding: 0.25em;
+    width: 100%;
 }
+
+.header--shadow {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.header__nav {
+    display: none;
+    list-style-type: none;
+}
+
+.header__nav.header--responsive {
+    display: block;
+}
+
+.header__nav li {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.header__brand {
+    font-family: Permanent Marker, Helvetica, sans-serif;
+    font-size: 2rem;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.header__icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/*
+.nav-list {
+    list-style-type: none;
+}
+
+.nav-list {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.nav-link {
+    text-decoration: none;
+}
+
+.header--sticky {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+.header__brand {
+    
+}
+
+.header__icon {
+    background-color: #ffffff;
+    border: none;
+    margin: auto;
+    padding: 14px 16px;
+}
+
+.header__nav {
+    display: none;
+    margin: auto;
+    text-align: right;
+}
+
+.header__nav a {
+    color: #000000;
+}
+
+.header__nav.header--responsive {
+    display: inline;
+    position: relative;
+}
+
+/* .header__nav.header--responsive a.header__icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  } */
+
+/* .header__nav.header--responsive {
+    float: none;
+    display: block;
+    text-align: left;
+} */
