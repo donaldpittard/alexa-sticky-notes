@@ -22,7 +22,7 @@
             margin: 0;
             position: relative;
             display: block;
-            background-image: url('img/login-bg-2.jpeg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/login-bg-2.jpeg');
             background-size: cover;
         }
 
@@ -47,6 +47,20 @@
         .logo {
             font-family: 'Permanent Marker';
         }
+
+        .btn {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .google-signin {
+            width: 100%;
+        }
+
+        .google-signin--disabled {
+            content: url(btn_google_signin_dark_disabled_web@2x.png);
+        }
     </style>
 </head>
 
@@ -59,14 +73,23 @@
                         <h6 class="text-center">Welcome!</h6>
                         <h1 class="card-title text-center logo">Sticky Notes</h1>
                         <form>
-                            <input type="button" onclick="window.location='<?= $loginUrl ?>'" value="Sign in with Google" class="btn btn-danger">
-
+                            <!-- <input type="button" onclick="window.location='<?= $loginUrl ?>'" value="Sign in with Google" class="btn btn-danger"> -->
+                            <button type="button" class="btn google-btn"><img class="google-signin" src="img/btn_google_signin_dark_normal_web@2x.png"></button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function handleGoogleSignin(event) {
+            this.disabled = true;
+            window.location = '<?= $loginUrl ?>';
+        }
+
+        document.querySelector('.google-btn')
+            .addEventListener('click', handleGoogleSignin);
+    </script>
 </body>
 
 </html>
