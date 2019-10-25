@@ -61,7 +61,10 @@ class App extends Component {
   }
 
   handleAddNoteClick() {
-    this.setState({ showAddNoteModal: true });
+    this.setState({
+      showMenu: false,
+      showAddNoteModal: true
+    });
   }
 
   handleMenuClick() {

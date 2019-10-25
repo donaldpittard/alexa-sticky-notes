@@ -4,4 +4,4 @@ logs
 *.log
 *.test
 .env
-.gitignore public/js/bundle.js
+public/js/bundle.js

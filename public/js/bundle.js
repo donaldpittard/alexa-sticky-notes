@@ -11670,7 +11670,10 @@ var App = function (_Component) {
   }, {
     key: 'handleAddNoteClick',
     value: function handleAddNoteClick() {
-      this.setState({ showAddNoteModal: true });
+      this.setState({
+        showMenu: false,
+        showAddNoteModal: true
+      });
     }
   }, {
     key: 'handleMenuClick',
@@ -26013,7 +26016,7 @@ exports.push([module.i, "body, html {\n  font-family: 'Segoe UI', Tahoma, Geneva
 
 exports = module.exports = __webpack_require__(14)(false);
 // Module
-exports.push([module.i, ".header {\n    background-color: #ffffff;\n    border-bottom: 1px solid rgba(0,0,0,.1);\n    color: #000000;\n    padding: 0.25em 0 0.75em 0;\n    width: 100%;\n}\n\n.header--sticky {\n    position: fixed;\n    top: 0;\n    z-index: 10;\n}\n\n.header--shadow {\n    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);\n}\n\n.header__nav {\n    display: none;\n    list-style-type: none;\n}\n\n.header__nav a, .header__nav a:hover {\n    color: #555555;\n}\n\n.header__nav.header--responsive {\n    display: block;\n}\n\n.header__nav li {\n    text-align: center;\n    margin: 15px auto;\n}\n\n.header__brand {\n    font-family: Permanent Marker, Helvetica, sans-serif;\n    font-size: 2rem;\n    display: inline-block;\n    margin-left: 20px;\n}\n\n.header__icon {\n    position: absolute;\n    top: 10px;\n    right: 20px;\n    cursor: pointer;\n    font-size: 24px;\n}\n\n@media screen and (min-width: 768px) {\n    .header {\n        display: flex;\n        justify-content: space-between;\n        padding-bottom: 0;\n        height: 70px;\n        align-items: center;\n    }\n\n    .header__nav {\n        display: flex;\n        margin-right: 30px;\n        flex-direction: row;\n        justify-content: flex-end;\n    }\n\n    .header__nav li {\n        margin: 0;\n    }\n\n    .header__link {\n        margin-left: 40px;\n    }\n    .header__brand {\n        margin-top: 0;\n    }\n   .header__icon {\n       display: none;\n    }\n}", ""]);
+exports.push([module.i, ".header {\n    background-color: #ffffff;\n    border-bottom: 1px solid rgba(0,0,0,.1);\n    color: #000000;\n    padding: 0.25em 0 0.75em 0;\n    width: 100%;\n}\n\n.header--sticky {\n    position: fixed;\n    top: 0;\n    z-index: 1;\n}\n\n.header--shadow {\n    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);\n}\n\n.header__nav {\n    display: none;\n    list-style-type: none;\n}\n\n.header__nav a, .header__nav a:hover {\n    color: #555555;\n}\n\n.header__nav.header--responsive {\n    display: block;\n}\n\n.header__nav li {\n    text-align: center;\n    margin: 15px auto;\n}\n\n.header__brand {\n    font-family: Permanent Marker, Helvetica, sans-serif;\n    font-size: 2rem;\n    display: inline-block;\n    margin-left: 20px;\n}\n\n.header__icon {\n    position: absolute;\n    top: 10px;\n    right: 20px;\n    cursor: pointer;\n    font-size: 24px;\n}\n\n@media screen and (min-width: 768px) {\n    .header {\n        display: flex;\n        justify-content: space-between;\n        padding-bottom: 0;\n        height: 70px;\n        align-items: center;\n    }\n\n    .header__nav {\n        display: flex;\n        margin-right: 30px;\n        flex-direction: row;\n        justify-content: flex-end;\n    }\n\n    .header__nav li {\n        margin: 0;\n    }\n\n    .header__link {\n        margin-left: 40px;\n    }\n    .header__brand {\n        margin-top: 0;\n    }\n   .header__icon {\n       display: none;\n    }\n}", ""]);
 
 
 /***/ }),
@@ -26022,7 +26025,7 @@ exports.push([module.i, ".header {\n    background-color: #ffffff;\n    border-b
 
 exports = module.exports = __webpack_require__(14)(false);
 // Module
-exports.push([module.i, ".modal {\n    top: 0;\n    left: 0;\n    color: black;\n    font-size: 8.5vw;\n    width:100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.6);\n    z-index: 2;\n}\n  \n.modal-main {\n    background: white;\n    width: 100%;\n}\n\n.modal-main__close-btn {\n    float: right;\n    font-size: 8.5vw;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n.modal__header {\n    height: 8.5vw;\n    font-size: 8.5vw;\n}\n\n.display-block {\n    display: block;\n}\n\n.display-none {\n    display: none;\n}\n\n@media only screen \n    and (min-width: 1000px) {\n    .modal {\n        font-size: 4.5vw;\n    }\n}\n\n@media only screen\n    and (min-width: 1200px) {\n    .modal {\n        font-size: 2.45vw;\n    }\n\n    .modal-main {\n        width: 87%;\n        margin: 0 auto;\n        position: relative;\n        top: 10%;\n    }\n\n    .modal__header {\n        height: 2.45vw;\n        font-size: 2.45vw;\n    }\n\n    .modal-main__close-btn {\n        font-size: 2.45vw;\n    }\n}\n\n@media only screen\n    and (min-width: 1400px) {\n    .modal {\n        font-size: 1.45vw;\n    }\n\n    .modal-main {\n        width: 80%;\n        margin: 0 auto;\n    }\n\n    .modal__header {\n        height: 1.45vw;\n        font-size: 1.45vw;\n    }\n\n    .modal-main__close-btn {\n        font-size: 1.45vw;\n    }\n}", ""]);
+exports.push([module.i, ".modal {\n    top: 0;\n    left: 0;\n    color: black;\n    font-size: 8.5vw;\n    width:100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.6);\n    z-index: 2;\n}\n  \n.modal-main {\n    background: white;\n    width: 100%;\n    height: 100%;\n}\n\n.modal-main__close-btn {\n    float: right;\n    font-size: 8.5vw;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n.modal__header {\n    height: 8.5vw;\n    font-size: 8.5vw;\n}\n\n.display-block {\n    display: block;\n}\n\n.display-none {\n    display: none;\n}\n/* \n@media only screen \n    and (min-width: 1000px) {\n    .modal {\n        font-size: 4.5vw;\n    }\n} */\n\n@media only screen\n    and (min-width: 600px) {\n    .modal {\n        font-size: 2.45vw;\n    }\n\n    .modal-main {\n        width: 87%;\n        margin: 0 auto;\n        position: relative;\n        top: 10%;\n        height: unset;\n    }\n\n    .modal__header {\n        height: 2.45vw;\n        font-size: 2.45vw;\n    }\n\n    .modal-main__close-btn {\n        font-size: 2.45vw;\n    }\n}\n\n@media only screen\n    and (min-width: 1400px) {\n    .modal {\n        font-size: 1.45vw;\n    }\n\n    .modal-main {\n        width: 80%;\n        margin: 0 auto;\n    }\n\n    .modal__header {\n        height: 1.45vw;\n        font-size: 1.45vw;\n    }\n\n    .modal-main__close-btn {\n        font-size: 1.45vw;\n    }\n}", ""]);
 
 
 /***/ }),
@@ -26040,7 +26043,7 @@ exports.push([module.i, ".note {\n    --blue: #0f92d8;\n    --cyan: #30cbef;\n  
 
 exports = module.exports = __webpack_require__(14)(false);
 // Module
-exports.push([module.i, ".note-list {\n    margin-top: 4.5em\n}\n\n@media only screen \n    and (min-width: 1000px) {\n    .note-list {\n        display: grid;\n        grid-template-columns: 1fr 1fr 1fr;\n    }\n}", ""]);
+exports.push([module.i, ".note-list {\n    margin-top: 4.5em\n}\n\n@media (min-width: 576px) {\n    .note-list {\n        margin-top: 6.5rem;\n    }\n}\n\n@media only screen \n    and (min-width: 1000px) {\n    .note-list {\n        display: grid;\n        grid-template-columns: 1fr 1fr 1fr;\n    }\n}", ""]);
 
 
 /***/ }),
