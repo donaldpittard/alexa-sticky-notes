@@ -1,50 +1,31 @@
-import React, { Component } from 'react';
-import Modal from './Modal';
-import AddNote from './AddNote';
+import React from 'react';
 import './AppHeader.css';
 
-class AppHeader extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            show: false
-        };
-    }
+const AppHeader = props => {
+    const responsive = props.showMenu ? 'header--responsive' : '';
 
-    showModal() {
-        this.setState({show: true});
-    };
-
-    hideModal() {
-        this.setState({show: false});
-    };
-
-    createNote(newNote) {
-        this.props.createNote(newNote);
-        this.hideModal();
-    };
-
-    signOut() {
-        fetch('/logout')
-            .then(response => (document.location.href = response.url));
-    };
-
-    render() {
-        return (
-            <div className="app-header">
-                <h1 className="app-header__title">Notes</h1>
-                <button className="app-header__button" type="button" onClick={this.showModal.bind(this)}>
-                    <i className="fa fa-plus-square" aria-hidden="true"></i>
-                </button>
-                <button className="app-header__button app-header__signout" onClick={this.signOut}>
-                    <i className="fa fa-sign-out"></i>
-                </button>
-                <Modal show={this.state.show} handleClose={this.hideModal.bind(this)}>
-                    <AddNote createNote={this.createNote.bind(this)} colors={this.props.colors} defaultColor={this.props.defaultColor} />
-                </Modal>
-            </div>
-        );
-    }
-}
+    return (
+        <nav className="header header--sticky header--shadow">
+            <h1 className="header__brand">Sticky Notes</h1>
+            <span className="header__icon"
+                onClick={props.onClickMenu}
+            >
+                <i className="fa fa-bars"></i>
+            </span>
+            <ul className={`header__nav ${responsive}`}>
+                <li>
+                    <a className="header__link"
+                        onClick={props.onClickAddNote}
+                        href="#">Add Note</a>
+                </li>
+                <li>
+                    <a className="header__link"
+                        onClick={props.onClickLogOut}
+                        href="#">Log Out</a>
+                </li>
+            </ul>
+        </nav>
+    );
+};
 
 export default AppHeader;

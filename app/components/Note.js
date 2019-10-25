@@ -1,23 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Note.css';
 
-class Note extends Component {
-    deleteNote(id) {
-        this.props.onDelete(id);
-    }
+const Note = ({ note, onDelete }) => {
+    let noteClasses = `note note--handwritten note--${note.color}`;
 
-    render() {
-        let noteClasses = `note note--handwritten note--${this.props.note.color}`;
-
-        return (
-            <div className={noteClasses}>
-                <button className="note__delete-btn" onClick={this.deleteNote.bind(this, this.props.note.id)}>
-                    <i className="fa fa-minus-square" aria-hidden="true"></i>
-                </button>
-                {this.props.note.text}
-            </div>
-        );
-    }
-}
+    return (
+        <div className={noteClasses}>
+            <button className="note__delete-btn" onClick={() => onDelete(note.id)}>
+                <i className="fa fa-minus-square" aria-hidden="true"></i>
+            </button>
+            {note.text}
+        </div>
+    );
+};
 
 export default Note;

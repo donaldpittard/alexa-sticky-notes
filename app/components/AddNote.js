@@ -37,7 +37,7 @@ class AddNote extends Component {
                 text: this.refs.text.value
             }
         }, function () {
-            this.props.createNote(this.state.newNote);
+            this.props.onCreateNote(this.state.newNote);
         });
         this.refs.text.value = '';
     }
@@ -66,7 +66,11 @@ class AddNote extends Component {
             <div className="add-note">
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <div>
-                        <textarea ref="text" className={textAreaClasses} maxLength="100" placeholder="Add your note text here..." autoFocus="true"></textarea>
+                        <textarea ref="text"
+                            className={textAreaClasses}
+                            maxLength="100"
+                            placeholder="Add your note text here..."
+                            autoFocus="true"></textarea>
                     </div>
                     <div>
                         <select ref="color" onChange={this.handleColorChange.bind(this)}>

@@ -1,12 +1,11 @@
 .note-list {
-    /* margin-top: 16px;
-    padding: 16px;  */
+    margin-top: 4.5em
 }
 
 @media only screen 
     and (min-width: 1000px) {
     .note-list {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }

@@ -1,41 +1,81 @@
-.app-header {
-    background-color: #3b57ab;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    color: #ffffff;
-    font-weight: bold;
-    padding-top: 6px;
-    text-align: center;
+.header {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    color: #000000;
+    padding: 0.25em 0 0.75em 0;
     width: 100%;
-    padding-bottom: 10px;
 }
 
-.app-header__logo {
-    margin: auto;
+.header--sticky {
+    position: fixed;
+    top: 0;
+    z-index: 10;
 }
 
-.app-header__title {
-    display: inline;
-    font-weight: bold;
-    font-size: 8.5vw;
+.header--shadow {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
 }
 
-.app-header__button {
-    background-color: transparent;
-    border: none;
-    color: white;
+.header__nav {
+    display: none;
+    list-style-type: none;
+}
+
+.header__nav a, .header__nav a:hover {
+    color: #555555;
+}
+
+.header__nav.header--responsive {
+    display: block;
+}
+
+.header__nav li {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.header__brand {
+    font-family: Permanent Marker, Helvetica, sans-serif;
+    font-size: 2rem;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.header__icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
     cursor: pointer;
-    float: right;
-    font-size: 8.5vw;
-    margin: auto 4px auto auto;
+    font-size: 24px;
 }
 
-@media only screen 
-	and (min-width: 1200px) {
-    .app-header__title {
-        font-size: 2.45vw;
+@media screen and (min-width: 768px) {
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        height: 70px;
+        align-items: center;
     }
 
-	.app-header__button {
-        font-size: 2.45vw;
+    .header__nav {
+        display: flex;
+        margin-right: 30px;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .header__nav li {
+        margin: 0;
+    }
+
+    .header__link {
+        margin-left: 40px;
+    }
+    .header__brand {
+        margin-top: 0;
+    }
+   .header__icon {
+       display: none;
     }
 }

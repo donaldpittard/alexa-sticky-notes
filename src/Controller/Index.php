@@ -4,13 +4,16 @@ namespace App\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Views\PhpRenderer;
+use SlimSession\Helper;
 
 class Index
 {
-    public function __construct($container) {
+    public function __construct(PhpRenderer $renderer, Helper $session)
+    {
         $this->isLoggedIn = false;
-        $this->renderer   = $container->get('renderer');
-        $this->session    = $container->get('session');
+        $this->renderer   = $renderer;
+        $this->session    = $session;
 
         if ($this->session->exists('access_token')) {
             $this->isLoggedIn = true;

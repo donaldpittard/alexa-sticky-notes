@@ -20,7 +20,8 @@
         "morris/lessql": "^0.3.5",
         "google/apiclient": "^2.2",
         "bryanjhv/slim-session": "~3.0",
-        "vlucas/phpdotenv": "^3.6"
+        "vlucas/phpdotenv": "^3.6",
+        "robmorgan/phinx": "^0.11.1"
     },
     "require-dev": {
         "phpunit/phpunit": ">=4.8 < 6.0",
