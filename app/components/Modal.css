@@ -12,6 +12,7 @@
 .modal-main {
     background: white;
     width: 100%;
+    height: 100%;
 }
 
 .modal-main__close-btn {
@@ -34,16 +35,16 @@
 .display-none {
     display: none;
 }
-
+/* 
 @media only screen 
     and (min-width: 1000px) {
     .modal {
         font-size: 4.5vw;
     }
-}
+} */
 
 @media only screen
-    and (min-width: 1200px) {
+    and (min-width: 600px) {
     .modal {
         font-size: 2.45vw;
     }
@@ -53,6 +54,7 @@
         margin: 0 auto;
         position: relative;
         top: 10%;
+        height: unset;
     }
 
     .modal__header {

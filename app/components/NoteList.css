@@ -2,6 +2,12 @@
     margin-top: 4.5em
 }
 
+@media (min-width: 576px) {
+    .note-list {
+        margin-top: 6.5rem;
+    }
+}
+
 @media only screen 
     and (min-width: 1000px) {
     .note-list {
