@@ -7,8 +7,12 @@ class AddNote extends Component {
         super(props);
         this.state = {
             defaultColor: this.props.colors[0],
-            show: false
+            show: false,
+            text: ''
         };
+        this.handleColorChange = this.handleColorChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
     }
 
     showModal() {
@@ -50,6 +54,20 @@ class AddNote extends Component {
         });
     }
 
+    handleTextAreaChange(e) {
+        const maxLines = 9;
+        const text = e.target.value;
+        const lines = text.split("\n");
+
+        if (lines.length >= maxLines) {
+            return;
+        }
+
+        this.setState({
+            text: text
+        });
+    }
+
     render() {
         let colors = [];
         let textAreaClasses = '';
@@ -64,17 +82,16 @@ class AddNote extends Component {
 
         return (
             <div className="add-note">
-                <form onSubmit={this.handleSubmit.bind(this)}>
+                <form onSubmit={this.handleSubmit}>
+                    <textarea ref="text"
+                        value={this.state.text}
+                        onChange={this.handleTextAreaChange}
+                        className={textAreaClasses}
+                        maxLength="80"
+                        placeholder="Add your note text here..."
+                        autoFocus="true"></textarea>
                     <div>
-                        <textarea ref="text"
-                            className={textAreaClasses}
-                            cols="20"
-                            rows="6"
-                            placeholder="Add your note text here..."
-                            autoFocus="true"></textarea>
-                    </div>
-                    <div>
-                        <select ref="color" onChange={this.handleColorChange.bind(this)}>
+                        <select ref="color" onChange={this.handleColorChange}>
                             {colors}
                         </select>
                     </div>

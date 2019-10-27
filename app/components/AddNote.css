@@ -2,14 +2,6 @@
     margin: 24px auto auto auto;
     text-align:center; 
 }
-/* 
-.add-note textarea {
-    resize: none;
-    margin: auto;
-    height: 80vw;
-    width: 80vw;
-    transform: none !important;
-} */
 
 .add-note textarea::placeholder {
     color: #eeeeee;
@@ -35,32 +27,3 @@
     background-color: #3b57ab;
     color: #ffffff;
 }
-
-/* @media only screen 
-    and (min-width: 321px) {
-    .add-note textarea {
-        font-size: 5.7vw;
-        margin: 0 auto;
-        height: 50vw;
-        width: 80vw;
-    }
-} */
-/* 
-@media only screen
-    and (min-width: 1200px) {
-    .add-note textarea {
-        font-size: 4vw;
-        height: 40vw;
-        width: 40vw;
-        margin: 0 auto;
-    }
-}
-
-@media only screen
-    and (min-width: 1400px) {
-    .add-note textarea {
-        font-size: 2.5vw;
-        height: 25vw;
-        width: 25vw;
-    }
-} */
