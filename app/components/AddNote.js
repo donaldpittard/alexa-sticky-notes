@@ -68,7 +68,8 @@ class AddNote extends Component {
                     <div>
                         <textarea ref="text"
                             className={textAreaClasses}
-                            maxLength="100"
+                            cols="20"
+                            rows="6"
                             placeholder="Add your note text here..."
                             autoFocus="true"></textarea>
                     </div>

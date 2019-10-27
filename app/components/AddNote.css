@@ -2,14 +2,14 @@
     margin: 24px auto auto auto;
     text-align:center; 
 }
-
+/* 
 .add-note textarea {
     resize: none;
     margin: auto;
     height: 80vw;
     width: 80vw;
     transform: none !important;
-}
+} */
 
 .add-note textarea::placeholder {
     color: #eeeeee;
@@ -36,7 +36,7 @@
     color: #ffffff;
 }
 
-@media only screen 
+/* @media only screen 
     and (min-width: 321px) {
     .add-note textarea {
         font-size: 5.7vw;
@@ -44,8 +44,8 @@
         height: 50vw;
         width: 80vw;
     }
-}
-
+} */
+/* 
 @media only screen
     and (min-width: 1200px) {
     .add-note textarea {
@@ -63,4 +63,4 @@
         height: 25vw;
         width: 25vw;
     }
-}
+} */

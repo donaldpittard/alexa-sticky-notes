@@ -31,6 +31,14 @@
 	word-break: break-word;
 }
 
+.note--formatted {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+	background: transparent;
+    white-space: pre-wrap;
+}
+
 .note:nth-child(even) {
 	-webkit-transform: rotate(2deg);
 	-moz-transform: rotate(2deg);
