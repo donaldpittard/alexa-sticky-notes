@@ -9,7 +9,9 @@ const Note = ({ note, onDelete }) => {
             <button className="note__delete-btn" onClick={() => onDelete(note.id)}>
                 <i className="fa fa-minus-square" aria-hidden="true"></i>
             </button>
-            {note.text}
+            <pre className="note--formatted">
+                {note.text}
+            </pre>
         </div>
     );
 };
