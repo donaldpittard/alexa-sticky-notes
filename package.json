@@ -1,7 +1,7 @@
 {
-  "name": "zf3-react-webpack",
+  "name": "sticky-notes",
   "version": "1.0.0",
-  "description": "Skeleton from Zend Framework v3 + React",
+  "description": "Slim PHP and React Sticky Notes",
   "main": "index.js",
   "scripts": {
     "dev": "node_modules/.bin/webpack --watch",
@@ -11,7 +11,6 @@
   "keywords": [
     "Zend",
     "Framework",
-    "ZF3",
     "React",
     "WebPack"
   ],

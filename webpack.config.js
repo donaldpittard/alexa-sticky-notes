@@ -57,15 +57,4 @@ let config = {
 	}
 };
 
-if (ENVIRONMENT == 'production') {
-	config.plugins.push(
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				drop_console: false,
-				warnings: false
-			}
-		})
-	);
-}
-
 module.exports = config;
