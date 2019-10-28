@@ -34,16 +34,16 @@ class AddNote extends Component {
             return;
         }
 
-        this.setState({
-            newNote: {
-                id: uuid.v4(),
-                color: this.refs.color.value,
-                text: this.refs.text.value
-            }
-        }, function () {
-            this.props.onCreateNote(this.state.newNote);
+        this.props.onCreateNote({
+            id: uuid.v4(),
+            color: this.refs.color.value,
+            text: this.refs.text.value
         });
+
         this.refs.text.value = '';
+        this.setState({
+            text: ''
+        });
     }
 
     handleColorChange() {
@@ -73,7 +73,7 @@ class AddNote extends Component {
         let textAreaClasses = '';
 
         if (this.props.colors) {
-            textAreaClasses = `note note--handwritten note--${this.state.defaultColor}`;
+            textAreaClasses = `note note--formatted note--handwritten note--${this.state.defaultColor}`;
 
             colors = this.props.colors.map((color, index) => {
                 return <option key={index} value={color}>{color}</option>
